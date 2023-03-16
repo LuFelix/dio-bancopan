@@ -62,7 +62,7 @@ public class ControlaSets {
          */
         {
             System.out.println("Remover notes menores que 7");
-            Iterator iterator1 = setNotas.iterator();
+            Iterator<Double> iterator1 = setNotas.iterator();
             while (iterator1.hasNext()){
                 if (Double.compare((Double)iterator1.next(),7.0) < 0) iterator1.remove();
             }
