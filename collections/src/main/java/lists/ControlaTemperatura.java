@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ControlaTemperatura {
     public static void main(String[] args) {
+        System.out.println("Classe ControlaTemperatura");
         System.out.println("--\t Lista de Temperaturas médias \t--");
         List<Double> listaTemperaturas = new ArrayList<Double>(List.of(29.6,26.7,28.4,27.2,29.9,30.1));
         System.out.println(listaTemperaturas);

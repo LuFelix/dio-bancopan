@@ -10,6 +10,8 @@ public class ControlaLists {
      * @param args
      */
     public static void main(String[] args) {
+        System.out.println("Classe ControlaLists");
+        System.out.println();
         primeiraEtapa();
         segundaEtapa();
         terceiraEtapa();
