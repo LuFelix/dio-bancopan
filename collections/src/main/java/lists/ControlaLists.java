@@ -4,64 +4,70 @@ import java.util.*;
 public class ControlaLists {
     public ControlaLists() {
     }
-
     /**
      * Main
      *
      * @param args
      */
     public static void main(String[] args) {
-        //primeiraEtapa();
-        //segundaEtapa();
-        // terceiraEtapa();
+        primeiraEtapa();
+        segundaEtapa();
+        terceiraEtapa();
         quartaEtapa();
-
     }
 
     /**
-     * 1 -> Utilizar a interface List implementando ArrayList
+     * 1 -> Instancia Listas e manipula os elementos
      */
     private static void primeiraEtapa() {
         /**
-         * Instancia uma Lista de Animais e confere os elementos
+         * Lista Animais e manipula os elementos
          */
-        System.out.println("--\t Instancia a Lista de Animais e confere os elementos \t-- ");
-        List<String> listaAnimais = new ArrayList<>();
-        listaAnimais.add("Gato");
-        listaAnimais.add("Peixe");
-        listaAnimais.add("Cachorro");
-        listaAnimais.add("Elefante");
-        listaAnimais.add("Girafa");
-
-        System.out.println("A lista contem Girafa? " + listaAnimais.contains("Girafa"));
-        System.out.println("A lista contem Cachorro? ".concat(listaAnimais.contains("Cachorro") ? "Sim" : "Não"));
-        System.out.println("A lista contem Baleia? ".concat(listaAnimais.contains("Baleia") ? "Sim" : "Não"));
+        {
+            System.out.println("--\t Instancia Listas e manipula os elementos \t-- ");
+            System.out.println("\n--\t Lista de Animais \t--");
+            List<String> listaAnimais = new ArrayList<>();
+            listaAnimais.add("Gato");
+            listaAnimais.add("Peixe");
+            listaAnimais.add("Cachorro");
+            listaAnimais.add("Elefante");
+            listaAnimais.add("Girafa");
+            System.out.println(listaAnimais);
+            System.out.println("A lista contem Girafa? " + listaAnimais.contains("Girafa"));
+            System.out.println("A lista contem Cachorro? ".concat(listaAnimais.contains("Cachorro") ? "Sim" : "Não"));
+            System.out.println("A lista contem Baleia? ".concat(listaAnimais.contains("Baleia") ? "Sim" : "Não"));
+        }
 
         /**
-         * Exibe uma Lista de carros em seguida exibe uma posiçãoapós, troca um elemento no fim troca um elemnto
+         * Lista carros, exibe uma posição e, após, troca um elemento
          */
-        System.out.println("--\t Exibe uma Lista de carros, exibe uma posição e, após, troca um elemento \t-- ");
-        List<String> listaCarros = new ArrayList<>();
-        listaCarros.add("Fusca");
-        listaCarros.add("Kombi");
-        listaCarros.add("Bugre");
-        listaCarros.add("Jipe");
-        listaCarros.add("Supermini");
-        System.out.println(listaCarros);
-        System.out.println("Terceira posição: " + listaCarros.get(2));
-        System.out.println();
-        System.out.println("--\t Troca o elemento da terceira posição \t--");
-        listaCarros.add(2, "Carajás");
-        System.out.println(listaCarros);
-        System.out.println("Terceira posição: " + listaCarros.get(2));
+        {
+            System.out.println();
+            System.out.println("--\t Lista carros, exibe uma posição e, após, troca um elemento \t-- ");
+            List<String> listaCarros = new ArrayList<>();
+            listaCarros.add("Fusca");
+            listaCarros.add("Kombi");
+            listaCarros.add("Bugre");
+            listaCarros.add("Jipe");
+            listaCarros.add("Supermini");
+            System.out.println(listaCarros);
+            System.out.println("Terceira posição: " + listaCarros.get(2));
+            System.out.println();
+            System.out.println("--\t Troca o elemento da terceira posição \t--");
+            listaCarros.add(2, "Carajás");
+            System.out.println(listaCarros);
+            System.out.println("Terceira posição: " + listaCarros.get(2));
+            System.out.println("\n");
+            System.out.println("--\t Fim da execução da primeira etapa \t--");
+            System.out.println();
+        }
     }
 
     /**
-     * 2 -> Receber notas, armazenar em uma lista, mostrar a menor,
-     * maior e média usando Collections Interface
+     * 2 -> Receber notas, armazenar em uma lista, mostrar a menor, maior e média usando Collections Interface
      */
     private static void segundaEtapa() {
-        System.out.println("--\t Segunda Etapa \t--");
+        System.out.println("\n--\t Segunda Etapa \t--");
         List<Double> listaNotas = new ArrayList<>();
         Scanner in = new Scanner(System.in);
 
@@ -91,22 +97,19 @@ public class ControlaLists {
     }
 
     /**
-     * 3 -> Receber uma lista de notas, iterar, remover elemento por valor,
-     * remover elemento pelo indice
+     * 3 -> Dada uma lista de notas, iterar, remover por valor, índice, eliminar menores que 7
      */
     private static void terceiraEtapa() {
         System.out.println("--\t Terceira Etapa \t--");
         System.out.println();
-        System.out.println("--\t Iterar sobre a Lista");
-
+        System.out.println("--\t Iterar sobre a lista, remover por valor, índice");
         List<Double> listaNotas = new ArrayList<Double>(List.of(7.7, 8.9, 4.5, 9.9, 6.7, 0d));
+        System.out.println(listaNotas);
         Iterator<Double> iterator = listaNotas.iterator();
         Double soma = 0.0;
         while (iterator.hasNext()) {
             soma = soma + iterator.next();
         }
-        System.out.println(listaNotas.toString());
-
         System.out.println();
         System.out.printf("Exibe a soma %.2f", soma);
         System.out.println();
@@ -122,18 +125,16 @@ public class ControlaLists {
         System.out.println(listaNotas);
 
         System.out.println();
-        System.out.println("--\t Remove as notas menores que 7");
+        System.out.println("--\t Remove notas menores que 7");
 
         Iterator<Double> iterator1 = listaNotas.iterator();
         while (iterator1.hasNext()) {
-            if (iterator1.next() < 7d) {
-                iterator1.remove();
-            }
+            if (iterator1.next() < 7d) iterator1.remove();
         }
         System.out.println(listaNotas);
         System.out.println();
 
-        System.out.println("--\t Apagar a lista");
+        System.out.println("--\t Esvaziar a lista");
         listaNotas.clear();
         System.out.println("--\t Lista Atual ");
         System.out.println(listaNotas);
@@ -164,7 +165,7 @@ public class ControlaLists {
         {
             System.out.println();
             System.out.println("--\t Ordem de Inserção \t--");
-            System.out.println(listaGatos.toString());
+            System.out.println(listaGatos);
             System.out.println();
         }
 
@@ -195,7 +196,7 @@ public class ControlaLists {
         }
 
         /**
-         * Ordenação Natural (Nome emordem alfabética)
+         * Ordenação Natural (Nome em ordem alfabética)
          * Para essa operação foi implementada a Interface Comparable na classe gato e utilizado
          * o método de comparação da Interface Collectios.
          */
@@ -210,6 +211,54 @@ public class ControlaLists {
 
         }
 
+       /**
+         * Ordenação por Idade usando Comparator
+         */
+        {
+            System.out.println();
+            System.out.println("--\t Ordenar a lista usando Comparator \t--");
+            System.out.println();
+            System.out.println("--\t Lista Ordenada(método sort de ArrayList)) \t--");
+            listaGatos.sort(new ComparaIdadeGato());
+            System.out.println(listaGatos);
+            System.out.println();
+            System.out.println("--\t Lista desordenada(método shuffle de Collections)) \t--");
+            Collections.shuffle(listaGatos);
+            System.out.println(listaGatos);
+            System.out.println();
+            System.out.println("--\t Lista ordenada(método sort de Collections)) \t--");
+            Collections.sort(listaGatos,new ComparaIdadeGato() );
+            System.out.println(listaGatos);
+        }
+
+        /**
+         * Ordenação por Cor usando Comparator
+         */
+        {
+            System.out.println();
+            System.out.println("--\t Lista desordenada(método shuffle de Collections)) \t--");
+            Collections.shuffle(listaGatos);
+            System.out.println(listaGatos +"\n");
+            System.out.println("--\t Lista ordenada(método sort de Collections)) \t--");
+            Collections.sort(listaGatos,new ComparaCorGato() );
+            System.out.println(listaGatos +"\n");
+
+        }
+
+        /**
+         * Ordenação por Nome - Cor - Idade usando Comparator
+         */
+        {
+            System.out.println();
+            System.out.println("--\t Lista desordenada(método shuffle de Collections)) \t--");
+            Collections.shuffle(listaGatos);
+            System.out.println(listaGatos +"\n");
+            System.out.println("--\t Lista ordenada(método sort de Collections)) \t--");
+            Collections.sort(listaGatos,new ComparaNomeCorIdade());
+            System.out.println(listaGatos +"\n");
+
+        }
+
         /**
          * Encerramento 4 etapa
          */
@@ -221,9 +270,8 @@ public class ControlaLists {
 
     }
 
-
     /**
-     * Implementação da classe Gato para exemplificar os exercícios.
+     * Criação da classe Gato com a implementação da interface Comparator para utilizar nos exercícios.
      */
     private static class Gato implements Comparable<Gato> {
         private String nome;
@@ -289,6 +337,33 @@ public class ControlaLists {
                     '}';
         }
     }
-    
+
+    /**
+     * Implementção de 3 Comparators para a classe Gato, sobrescrever o método compare
+     * utilizando atributos da classe alvo e métodos das classes Java.
+     */
+    private static class ComparaIdadeGato implements Comparator<Gato>{
+        @Override
+        public int compare(Gato g1, Gato g2) {
+            return Integer.compare(g1.getIdade(),g2.getIdade());
+        }
+    }
+    private static class ComparaCorGato implements Comparator<Gato>{
+        @Override
+        public int compare(Gato g1, Gato g2) {
+            return  g1.getPelagem().compareToIgnoreCase(g2.getPelagem());
+        }
+    }
+    private static class ComparaNomeCorIdade implements Comparator<Gato>{
+        @Override
+        public int compare(Gato g1, Gato g2) {
+            int nome = g1.getNome().compareToIgnoreCase(g2.getNome());
+            if (nome!=0) return nome;
+            int cor = g1.getPelagem().compareToIgnoreCase(g2.getPelagem());
+            if (cor!=0) return cor;
+            return Integer.compare(g1.getIdade(),g2.getIdade());
+        }
+    }
+
 }
 
