@@ -2,6 +2,10 @@ package set;
 
 import java.util.*;
 
+/**
+ * Sets são coleções que não aceitam elementos duplicados e para utilizar é necessário implementar os métodos
+ * Equals, HashCode e Comparable. Para mais critérios de comparação deve-se implementar a interface Comparator
+ */
 public class ControlaSets {
     public static void main(String[] args) {
         /**
