@@ -1,6 +1,7 @@
 package map;
 
 import javax.sound.midi.Soundbank;
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -12,19 +13,27 @@ public class ControlaMaps {
     public static void main(String[] args) {
 
         /**
-         * Criar um conjunto(Dicionário) de carros com seus respectivos consumos
+         * Criar um conjunto(Dicionário) de carros (Map) com seus respectivos consumos
          */
         Map<String,Double> mapCarros  = new HashMap<>();
-        mapCarros.put("Gol",14.2);
-        mapCarros.put("Corsa",12.8);
-        mapCarros.put("Uno",16.4);
-        mapCarros.put("Celta",15.9);
-        mapCarros.put("Mobi",16.8);
-        mapCarros.put("Clio",15.2);
-        mapCarros.put("Up!",16.8);
 
         /**
-         * Exibição do Mapa com 6 Carros
+         * Adição de elementos ao Mapa
+         */
+        {
+            mapCarros.put("Gol", 14.2);
+            mapCarros.put("Corsa", 12.8);
+            mapCarros.put("Uno", 16.4);
+            mapCarros.put("Celta", 15.9);
+            mapCarros.put("Mobi", 16.8);
+            mapCarros.put("Clio", 15.2);
+            mapCarros.put("Up!", 16.8);
+            mapCarros.put("Onix", 16.0);
+            mapCarros.put("Siena", 16.0);
+        }
+
+        /**
+         * Exibição do Mapa com 9 Carros
          */
         {
             System.out.println();
@@ -33,7 +42,7 @@ public class ControlaMaps {
         }
 
         /**
-         * Atualizar o consumo do corsa para 13.8
+         * Atualizar o consumo de um elemento para 13.8
          */
         {
             System.out.println();
@@ -43,7 +52,7 @@ public class ControlaMaps {
         }
 
         /**
-         * Conferir se elementos estão no conjunto HashMap
+         * Conferir se elementos pertencem ao conjunto HashMap
          */
         {
             System.out.println();
@@ -63,7 +72,7 @@ public class ControlaMaps {
         }
 
         /**
-         * Exibir os nomes dos carros
+         * Exibir as chaves do conjunto (os nomes dos carros)
          */
         {
             System.out.println();
@@ -73,7 +82,7 @@ public class ControlaMaps {
         }
 
         /**
-         * Exibir os consumos dos carros
+         * Exibir os valores do conjunto (consumos dos carros)
          */
         {
             System.out.println();
@@ -83,7 +92,7 @@ public class ControlaMaps {
         }
 
         /**
-         * Exibir o carro de menor emaior consumo
+         * Exibir a chave(carro) de menor e maior valor(consumo)
          */
         {
             System.out.println();
@@ -101,7 +110,80 @@ public class ControlaMaps {
             }
         }
 
+        /**
+         * Exibir a soma de tos os consumos e a média
+         */
+        {
+            System.out.println();
+            System.out.println("--\t Exibir a soma dos consumos e a média ");
+            Collection<Double> consumos = mapCarros.values();
+            Iterator<Double> iterator = consumos.iterator();
+            double aux = 0d;
+            while (iterator.hasNext()){
+                aux += iterator.next();
+            }
+            System.out.printf("A soma dos consumoe é: %.2f", aux);
+            System.out.println();
+            System.out.printf("A média dos consumos é: %.2f", aux/consumos.size());
+            System.out.println();
+        }
 
+        /**
+         * Exibir uma collection com os consumos, remover consumos maior que 16.0km/l
+         */
+        {
+            System.out.println();
+            System.out.println("--\t Remover os carros com consumo inferior a 16,0 Km/l ");
+            System.out.println();
+            Collection<Double> consumos2 =  mapCarros.values();
+            System.out.println("Collection consumos: " + consumos2);
+            System.out.println();
+            Iterator<Double> iterator2 = mapCarros.values().iterator();
+            while (iterator2.hasNext()) {
+                double aux = iterator2.next();
+                if (Double.compare(aux,16d) < 0) {
+                    System.out.println("Remover é inferior a 16km/l: "+aux);
+                    iterator2.remove();
+                }else if (Double.compare(aux,16d) > 0){
+                    System.out.println("Não remover, é superior a 16km/l : "+aux);
+                }else {
+                    System.out.println("Não remover é igual a 16km/l "+aux);
+                }
+            }
+            System.out.println();
+            System.out.println("Consumos econômicos: " + mapCarros.values());
+            System.out.println("Carros mais econômicos: "+mapCarros);
+            System.out.println();
+        }
+
+        /**
+         * Exibir os carros na ordem em que forem inseridos(LinkedHashMap)
+         */
+        {
+            System.out.println();
+            System.out.println("--\t Exibir os arros em ordem de inserção ");
+            Map<String, Double> linkedHashMapCarros = new LinkedHashMap<>(mapCarros);
+            System.out.println();
+            System.out.println("LinkedHashMap Carros: " + linkedHashMapCarros);
+            System.out.println();
+        }
+
+        /**
+         * Exibir os carros na ordem de nome(TreeMap), limpar e conferir.
+         */
+        {
+            System.out.println();
+            System.out.println("--\t Exibir os arros em ordem de nome(TreeMap) ");
+            Map<String, Double> treeMapCarros = new TreeMap<>(mapCarros);
+            System.out.println();
+            System.out.println("TreeMap Ordenado por nome do carros: ");
+            System.out.println(treeMapCarros);
+            System.out.println();
+            treeMapCarros.clear();
+            System.out.println("TreeMap limpo: " + treeMapCarros);
+            System.out.println("TreeMap está vazio? " + treeMapCarros.isEmpty());
+
+        }
 
     }
 }
